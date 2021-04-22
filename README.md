@@ -28,7 +28,11 @@ The exposed static methods from program.driver package can be used to run the pr
 
     => A conference object, from program.objects package.
 
-    => The user will be prompted to enter the event name and duration
+    => The user will be prompted to enter 
+          
+          => Number of events   
+          
+          => Name and duration for each event
 
 
 
