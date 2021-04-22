@@ -19,8 +19,8 @@ public class Conference {
     public Conference(){
         this(
                 new int[]{180, 240}, 900, 1700,
-                new Event("lunch", 1200,60),
-                new Event("networking event", 1700,0)
+                new Event("Lunch", 1200,60),
+                new Event("Networking Event", 1700,0)
         );
     }
 
