@@ -16,7 +16,7 @@ Takes two arguments,
 => A conference object, from program.objects package.
 => An Array of Event objects, from program.objects package. 
 
-4. ProgramDriver.startWithUserInput(Conference conference)
+3. ProgramDriver.startWithUserInput(Conference conference)
 Takes only one argument,
 => A conference object, from program.objects package.
 => The user will be prompted to enter the event name and duration
