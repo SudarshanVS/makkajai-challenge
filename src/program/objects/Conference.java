@@ -1,3 +1,5 @@
+package program.objects;
+
 public class Conference {
 
     private final int[] blockDurations;

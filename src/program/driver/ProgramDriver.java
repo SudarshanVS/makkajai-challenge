@@ -1,3 +1,10 @@
+package program.driver;
+
+import program.logic.Scheduler;
+import program.objects.Conference;
+import program.objects.Event;
+import program.validation.InputValidator;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;

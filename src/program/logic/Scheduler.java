@@ -1,3 +1,8 @@
+package program.logic;
+
+import program.objects.Conference;
+import program.objects.Event;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -6,11 +11,11 @@ public class Scheduler {
 
     private final Conference conference;
 
-    public Scheduler(Conference conference) {
+     public Scheduler(Conference conference) {
         this.conference = conference;
     }
 
-    public ArrayList<LinkedList<Event>> organise(ArrayList<Event> events) {
+   public ArrayList<LinkedList<Event>> organise(ArrayList<Event> events) {
 
         Collections.sort(events); //descending order for greedy algorithm
 

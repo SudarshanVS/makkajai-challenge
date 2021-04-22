@@ -1,3 +1,5 @@
+package program.objects;
+
 public class Event implements Comparable<Event> {
     private final String name;
     private final int duration;

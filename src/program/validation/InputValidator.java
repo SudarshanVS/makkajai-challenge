@@ -1,3 +1,5 @@
+package program.validation;
+
 public class InputValidator {
 
     public static int isValidNumber(String s) {

@@ -1,3 +1,4 @@
+import tests.Test;
 
 public class Main {
 

@@ -1,3 +1,9 @@
+package tests;
+
+import program.objects.Conference;
+import program.objects.Event;
+import program.driver.ProgramDriver;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
