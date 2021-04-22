@@ -30,9 +30,9 @@ The exposed static methods from program.driver package can be used to run the pr
 
     => The user will be prompted to enter 
           
-          =>Number of Events   
+          =>Number of events   
           
-          =>Event name and duration for each event
+          =>Name and duration for each event
 
 
 
