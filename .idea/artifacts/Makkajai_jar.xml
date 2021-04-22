@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Makkajai:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Makkajai_jar</output-path>
+    <root id="archive" name="Makkajai.jar">
+      <element id="module-output" name="Makkajai" />
+    </root>
+  </artifact>
+</component>
