@@ -12,6 +12,8 @@ public class ProgramDriver {
 
     public static void startWithUserInput(Conference conference) {
 
+        System.out.println("USER INPUT");
+        System.out.println("**********");
 
         int n = numberInput("Enter Number of talks", false);
 
