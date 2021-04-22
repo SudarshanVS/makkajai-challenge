@@ -5,9 +5,7 @@ import program.objects.Conference;
 import program.objects.Event;
 import program.validation.InputValidator;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 
 public class ProgramDriver {
     private static final Scanner scanner = new Scanner(System.in);
@@ -47,6 +45,10 @@ public class ProgramDriver {
 
         printSchedule(scheduler.organise(new ArrayList<>(events)));
 
+    }
+
+    public static void startWithDataSet(Conference conference, Event[] events){
+        startWithDataSet(conference, new ArrayList<Event>(Arrays.asList(events)));
     }
 
 
