@@ -6,7 +6,7 @@ The problem can be solved using a modified DP knapsack algorithm.
 
 The exposed static methods from program.driver package can be used to run the program:
 
-1. ProgramDriver.startWithDataSet(Conference conference, Event[] events)
+1. ProgramDriver.startWithDataSet(Conference conference, ArrayList<Event> events)
 Takes two arguments,
 => A conference object, from program.objects package.
 => An ArrayList of Event objects, from program.objects package. 
