@@ -1,8 +1,8 @@
 # makkajai-challenge
 
-Makkajai coding challenge question number 3 (Conference)
+Makkajai coding challenge question number 3 (Conference):
 
-The problem can be solved using a modified DP knapsack algorithm
+The problem can be solved using a modified DP knapsack algorithm.
 
 The exposed static methods from program.driver package can be used to run the program:
 
