@@ -3,6 +3,7 @@ package program.driver;
 import program.logic.Scheduler;
 import program.objects.Conference;
 import program.objects.Event;
+import program.objects.Track;
 import program.validation.InputValidator;
 
 import java.util.*;
@@ -54,13 +55,13 @@ public class ProgramDriver {
     }
 
 
-    private static void printSchedule(ArrayList<LinkedList<Event>> tracks) {
+    private static void printSchedule(ArrayList<Track> tracks) {
 
         int count = 1;
-        for (LinkedList<Event> track : tracks) {
+        for (Track track : tracks) {
             System.out.println("\n\nTRACK " + count++);
             System.out.println("**********");
-            for (Event event : track) {
+            for (Event event : track.getEvents()) {
                 if (event == track.getLast())
                     System.out.println(String.format("%04d", event.getStartTime()) + " " + event.getName() + " ");
                 else
