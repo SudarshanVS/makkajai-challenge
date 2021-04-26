@@ -3,22 +3,21 @@ package program.logic;
 import program.objects.Conference;
 import program.objects.Event;
 import program.objects.Track;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Scheduler extends ScheduleOrganiser{
+public class Scheduler extends ScheduleOrganiser {
 
-    private final Conference conference;
-
-     public Scheduler(Conference conference) {
-        this.conference = conference;
+    public Scheduler(Conference conference) {
+        super(conference);
     }
 
-   public ArrayList<Track> organise(ArrayList<Event> events) {
+    public ArrayList<Track> organise(ArrayList<Event> events) {
 
         Collections.sort(events); //descending order for greedy algorithm
 
-       ArrayList<Track> tracks = new ArrayList<>();
+        ArrayList<Track> tracks = new ArrayList<>();
 
         int[] blocks = conference.getBlockDurations();
         int usedCount = 0;
@@ -42,7 +41,7 @@ public class Scheduler extends ScheduleOrganiser{
         return tracks;
     }
 
-    protected int algorithm(int block, int[][] dp_Map, ArrayList<Event>events){
+    protected int algorithm(int block, int[][] dp_Map, ArrayList<Event> events) {
         //Modified DP Knapsack Algorithm
         int i = 1;
         for (; i < dp_Map.length; i++) {
@@ -66,7 +65,7 @@ public class Scheduler extends ScheduleOrganiser{
         return i;
     }
 
-     protected void trace(int i, int[] used, int block, int[][] dp_Map, ArrayList<Event>events){
+    protected void trace(int i, int[] used, int block, int[][] dp_Map, ArrayList<Event> events) {
         //backtracking to find the events that were slotted in current block
         int j = block;
         for (; i >= 1; i--) {
@@ -79,7 +78,7 @@ public class Scheduler extends ScheduleOrganiser{
         }
     }
 
-     protected int[] addToTrack(int startTime, int block, int[] used,int usedCount, ArrayList<Event>events, Track track){
+    protected int[] addToTrack(int startTime, int block, int[] used, int usedCount, ArrayList<Event> events, Track track) {
         //adding slotted events to a track and calculating start times
         for (int i = events.size() - 1; i >= 0; i--)
             if (used[i] == 1) {
@@ -95,7 +94,5 @@ public class Scheduler extends ScheduleOrganiser{
         }
         return new int[]{usedCount, startTime};
     }
-
-
 
 }

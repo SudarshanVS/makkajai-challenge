@@ -51,7 +51,7 @@ public class ProgramDriver {
     }
 
     public static void startWithDataSet(Conference conference, Event[] events){
-        startWithDataSet(conference, new ArrayList<Event>(Arrays.asList(events)));
+        startWithDataSet(conference, new ArrayList<>(Arrays.asList(events)));
     }
 
 
