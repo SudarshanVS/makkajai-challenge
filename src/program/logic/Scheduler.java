@@ -2,6 +2,7 @@ package program.logic;
 
 import program.objects.Conference;
 import program.objects.Event;
+import program.objects.Time;
 import program.objects.Track;
 
 import java.util.ArrayList;
@@ -29,12 +30,11 @@ public class Scheduler extends ScheduleOrganiser {
                 int[][] dp_Map = new int[events.size() + 1][block + 1];
                 int[] used = new int[events.size()];  //track if an event was slotted
                 trace(algorithm(block, dp_Map, events), used, block, dp_Map, events);
-                int[] result = addToTrack(startTime, block, used, usedCount, events, track);
+                int[] result = addToTrack(startTime, used, usedCount, events, track);
                 usedCount = result[0];
                 startTime = result[1];
             }
-            //end track and add to list of tracks
-            track.add(conference.getEndEvent());
+            conference.goToFirstBreak();
             tracks.add(track);
         } while (usedCount < events.size()); //continue until all have a slot
 
@@ -78,20 +78,20 @@ public class Scheduler extends ScheduleOrganiser {
         }
     }
 
-    protected int[] addToTrack(int startTime, int block, int[] used, int usedCount, ArrayList<Event> events, Track track) {
+    protected int[] addToTrack(int startTime, int[] used, int usedCount, ArrayList<Event> events, Track track) {
         //adding slotted events to a track and calculating start times
         for (int i = events.size() - 1; i >= 0; i--)
             if (used[i] == 1) {
                 events.get(i).setStartTime(startTime);
-                startTime = addTime(startTime, events.get(i).getDuration());
+                startTime = Time.addTime(startTime, events.get(i).getDuration());
                 track.add(events.get(i));
                 events.remove(i);
                 usedCount++;
             }
-        if (block == 180) {
-            track.add(conference.getBreakEvent());
-            startTime = addTime(startTime, conference.getBreakEvent().getDuration());
-        }
+        Event breakEvent = conference.getNextBreak();
+        track.add(breakEvent);
+        startTime = Time.addTime(startTime, breakEvent.getDuration());
+
         return new int[]{usedCount, startTime};
     }
 

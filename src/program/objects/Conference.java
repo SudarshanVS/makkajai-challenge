@@ -1,27 +1,38 @@
 package program.objects;
 
-public class Conference {
+import java.awt.*;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
-    private final int[] blockDurations;
+public class Conference {
     private final int startTime;
     private final int endTime;
-    private final Event breakEvent;
-    private final Event endEvent;
+    private final int[] blockDurations;
+    private final ListIterator<Event> nextBreakEvent;
 
-    public Conference(int[] blockDurations, int startTime, int endTime, Event breakEvent, Event endEvent) {
-        this.blockDurations = blockDurations;
+    public Conference(int startTime, int endTime, LinkedList<Event> breakEvents) {
         this.startTime = startTime;
         this.endTime = endTime;
-        this.breakEvent = breakEvent;
-        this.endEvent = endEvent;
+
+        if (breakEvents == null) {
+            breakEvents = new LinkedList<>();
+            breakEvents.add(new Event("Lunch", 1200, 60));
+            breakEvents.add(new Event("Networking Event", 1700, 0));
+        }
+
+        this.blockDurations = new int[breakEvents.size()];
+
+        int i = 0;
+        int stime = this.startTime;
+        for (Event breakEvent : breakEvents) {
+            blockDurations[i++] = Time.toMinutes(Time.subTime(breakEvent.getStartTime(), stime));
+            stime = Time.addTime(breakEvent.getStartTime(), breakEvent.getDuration());
+        }
+        this.nextBreakEvent = breakEvents.listIterator();
     }
 
-    public Conference(){
-        this(
-                new int[]{180, 240}, 900, 1700,
-                new Event("Lunch", 1200,60),
-                new Event("Networking Event", 1700,0)
-        );
+    public Conference() {
+        this(900, 1700, null);
     }
 
     public int[] getBlockDurations() {
@@ -36,11 +47,16 @@ public class Conference {
         return endTime;
     }
 
-    public Event getBreakEvent() {
-        return breakEvent;
+    public Event getNextBreak() {
+        if (this.nextBreakEvent.hasNext())
+            return this.nextBreakEvent.next();
+        else
+            return null;
     }
 
-    public Event getEndEvent() {
-        return endEvent;
+
+    public void goToFirstBreak() {
+        while (this.nextBreakEvent.hasPrevious())
+            this.nextBreakEvent.previous();
     }
 }
